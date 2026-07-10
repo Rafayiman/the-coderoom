@@ -3,8 +3,7 @@ import { useRef, useMemo } from "react";
 import * as THREE from "three";
 
 /**
- * Elegant flowing shader plane — soft aurora-like waves in ink & amber.
- * No wireframes, no grid noise on geometry. Cinematic and calm.
+ * Pure monochrome aurora — silver/white smoke drifting over deep black.
  */
 function AuroraPlane() {
   const materialRef = useRef<THREE.ShaderMaterial>(null);
@@ -13,9 +12,6 @@ function AuroraPlane() {
     () => ({
       uTime: { value: 0 },
       uMouse: { value: new THREE.Vector2(0, 0) },
-      uSignal: { value: new THREE.Color("#f0a860") },
-      uInk: { value: new THREE.Color("#0d0f14") },
-      uBone: { value: new THREE.Color("#f2ede0") },
       uResolution: { value: new THREE.Vector2(1, 1) },
     }),
     []
@@ -47,12 +43,8 @@ function AuroraPlane() {
     varying vec2 vUv;
     uniform float uTime;
     uniform vec2 uMouse;
-    uniform vec3 uSignal;
-    uniform vec3 uInk;
-    uniform vec3 uBone;
     uniform vec2 uResolution;
 
-    // hash / value noise
     vec2 hash2(vec2 p){ p = vec2(dot(p,vec2(127.1,311.7)), dot(p,vec2(269.5,183.3))); return -1.0+2.0*fract(sin(p)*43758.5453); }
     float noise(in vec2 p){
       const float K1 = 0.366025404;
@@ -77,7 +69,7 @@ function AuroraPlane() {
       float aspect = uResolution.x / max(uResolution.y, 1.0);
       vec2 p = (uv - 0.5) * vec2(aspect, 1.0);
 
-      float t = uTime * 0.08;
+      float t = uTime * 0.07;
       vec2 q = vec2(fbm(p*1.6 + t), fbm(p*1.6 - t + vec2(3.2,1.7)));
       vec2 r = vec2(
         fbm(p*2.4 + q*1.4 + uMouse*0.35 + vec2(1.7,9.2) + t*1.3),
@@ -85,17 +77,17 @@ function AuroraPlane() {
       );
       float f = fbm(p*3.0 + r);
 
-      // soft aurora band
       float band = smoothstep(0.15, 0.9, f);
-      // subtle radial vignette bias
       float rad = length(p);
       float glow = smoothstep(1.2, 0.1, rad);
 
-      vec3 col = mix(uInk, uInk*1.6, band);
-      col = mix(col, uSignal, smoothstep(0.55, 0.95, f) * 0.55 * glow);
-      col = mix(col, uBone*0.55, smoothstep(0.75, 1.0, f) * 0.25 * glow);
+      // pure grayscale — deep black to soft silver
+      float base = 0.04;
+      float highlight = smoothstep(0.55, 0.98, f) * 0.55 * glow;
+      float mid = band * 0.18;
+      float g = base + mid + highlight;
+      vec3 col = vec3(g);
 
-      // deep vignette
       col *= mix(0.35, 1.0, glow);
 
       // subtle film grain
@@ -122,17 +114,15 @@ function AuroraPlane() {
 
 function DriftingParticles() {
   const ref = useRef<THREE.Points>(null);
-  const count = 600;
-  const { positions, sizes } = useMemo(() => {
+  const count = 500;
+  const { positions } = useMemo(() => {
     const positions = new Float32Array(count * 3);
-    const sizes = new Float32Array(count);
     for (let i = 0; i < count; i++) {
       positions[i * 3] = (Math.random() - 0.5) * 10;
       positions[i * 3 + 1] = (Math.random() - 0.5) * 6;
       positions[i * 3 + 2] = (Math.random() - 0.5) * 4;
-      sizes[i] = Math.random() * 0.6 + 0.2;
     }
-    return { positions, sizes };
+    return { positions };
   }, []);
 
   useFrame((state) => {
@@ -152,13 +142,12 @@ function DriftingParticles() {
     <points ref={ref}>
       <bufferGeometry>
         <bufferAttribute attach="attributes-position" args={[positions, 3]} />
-        <bufferAttribute attach="attributes-size" args={[sizes, 1]} />
       </bufferGeometry>
       <pointsMaterial
         size={0.012}
-        color="#f2ede0"
+        color="#ffffff"
         transparent
-        opacity={0.5}
+        opacity={0.45}
         sizeAttenuation
         depthWrite={false}
         blending={THREE.AdditiveBlending}
