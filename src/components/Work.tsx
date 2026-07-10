@@ -100,9 +100,7 @@ export function Work() {
       <div className="mx-auto max-w-[1600px] px-6 md:px-10">
         <div className="mb-20 flex items-end justify-between">
           <div>
-            <div className="font-mono-tech text-[11px] uppercase tracking-[0.3em] text-muted-foreground mb-4">
-              [ 02 ] Selected Work
-            </div>
+            <div className="label mb-6">02 — Selected Work</div>
             <h2 className="work-title font-display text-6xl font-medium tracking-tightest md:text-8xl">
               <span className="inline-block overflow-hidden">
                 <span className="work-title-word inline-block">Built.</span>

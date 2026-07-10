@@ -52,9 +52,7 @@ export function Process() {
     >
       <div className="mx-auto max-w-[1600px] px-6 md:px-10">
         <div className="mb-20 max-w-3xl">
-          <div className="font-mono-tech text-[11px] uppercase tracking-[0.3em] text-muted-foreground mb-4">
-            [ 03 ] Operating System
-          </div>
+          <div className="label mb-6">03 — How we work</div>
           <h2 className="font-display text-5xl font-medium tracking-tightest md:text-7xl">
             A four-phase pipeline from <span className="text-outline">idea</span> to
             production intelligence.
