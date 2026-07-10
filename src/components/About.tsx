@@ -46,14 +46,13 @@ export function About() {
 
   return (
     <section
-      id="about"
       ref={rootRef}
       className="relative border-t border-border py-32 md:py-48"
     >
       <div className="mx-auto max-w-[1600px] px-6 md:px-10">
         <div className="grid gap-16 md:grid-cols-12">
           <div className="md:col-span-4">
-            <div className="label mb-6">04 — The Studio</div>
+            <div className="label mb-6">The Studio</div>
             <h2 className="font-display text-5xl font-medium tracking-tightest">
               Small team. <br />
               <span className="text-outline">Loud output.</span>

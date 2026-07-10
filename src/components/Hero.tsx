@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
+import { Link } from "@tanstack/react-router";
 import { HeroCanvas } from "./HeroCanvas";
 
 export function Hero() {
@@ -33,7 +34,6 @@ export function Hero() {
 
   return (
     <section
-      id="top"
       ref={rootRef}
       className="relative min-h-screen w-full overflow-hidden"
     >
@@ -41,18 +41,9 @@ export function Hero() {
         <HeroCanvas />
       </div>
 
-      {/* Soft floor gradient into page */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-64 bg-gradient-to-b from-transparent to-background" />
 
       <div className="relative z-20 mx-auto flex min-h-screen max-w-[1600px] flex-col justify-between px-6 pb-16 pt-32 md:px-10 md:pt-40">
-        {/* Meta top row */}
-        <div className="hero-meta flex items-center justify-between font-mono-tech text-[11px] uppercase tracking-[0.28em] text-muted-foreground">
-          <span className="label">Ai · Design · Engineering</span>
-          <span className="hidden md:inline">Est. 2024</span>
-          <span className="hidden md:inline">Brooklyn — Remote worldwide</span>
-        </div>
-
-        {/* Headline */}
         <div className="my-auto max-w-[1400px]">
           <h1 className="font-display font-medium leading-[0.86] tracking-tightest text-[clamp(3.5rem,13vw,13rem)]">
             <div className="overflow-hidden">
@@ -69,25 +60,24 @@ export function Hero() {
           </h1>
         </div>
 
-        {/* Bottom row */}
         <div className="hero-meta mt-16 grid grid-cols-2 items-end gap-6 md:grid-cols-3">
           <p className="max-w-sm text-sm leading-relaxed text-muted-foreground md:col-span-1">
             A studio building AI-native products, autonomous agents and
-            experiential web systems for founders who move fast.
+            experiential web systems.
           </p>
           <div className="hidden md:flex flex-col items-center gap-3">
-            <div className="h-14 w-px bg-gradient-to-b from-transparent via-signal to-transparent" />
+            <div className="h-14 w-px bg-gradient-to-b from-transparent via-foreground to-transparent" />
             <div className="font-mono-tech text-[10px] uppercase tracking-[0.32em] text-muted-foreground">
               Scroll
             </div>
           </div>
           <div className="flex justify-end gap-3">
-            <a href="#work" className="btn-ghost-tech">
+            <Link to="/work" className="btn-ghost-tech">
               View Work
-            </a>
-            <a href="#book" className="btn-solid-tech">
+            </Link>
+            <Link to="/book" className="btn-solid-tech">
               Book a Call
-            </a>
+            </Link>
           </div>
         </div>
       </div>

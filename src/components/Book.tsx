@@ -43,14 +43,13 @@ export function Book() {
 
   return (
     <section
-      id="book"
       ref={rootRef}
       className="relative border-t border-border py-32 md:py-48"
     >
       <div className="mx-auto max-w-[1600px] px-6 md:px-10">
         <div className="grid gap-16 md:grid-cols-12">
           <div className="md:col-span-5">
-            <div className="label mb-6">05 — Get in touch</div>
+            <div className="label mb-6">Get in touch</div>
             <div className="overflow-hidden">
               <h2 className="book-title font-display text-6xl md:text-8xl font-medium tracking-tightest leading-[0.9]">
                 Book a <br />
@@ -169,7 +168,7 @@ export function Book() {
 
                 <div className="book-el flex items-center justify-between pt-4 border-t border-border">
                   <span className="font-mono-tech text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-                    <span className="text-signal">●</span> {SLOTS[slot].day} {SLOTS[slot].date} · {SLOTS[slot].time} {SLOTS[slot].tz}
+                    {SLOTS[slot].day} {SLOTS[slot].date} · {SLOTS[slot].time} {SLOTS[slot].tz}
                   </span>
                   <button type="submit" className="btn-solid-tech">
                     Send message

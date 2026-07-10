@@ -29,7 +29,6 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-signal: var(--signal);
 
   --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
@@ -37,39 +36,36 @@
 }
 
 :root {
-  --radius: 0.25rem;
+  --radius: 0rem;
 
-  /* Refined ink & bone with a signal amber accent */
-  --background: oklch(0.11 0.005 250);
-  --foreground: oklch(0.96 0.008 85);
-  --card: oklch(0.14 0.006 250);
-  --card-foreground: oklch(0.96 0.008 85);
-  --popover: oklch(0.14 0.006 250);
-  --popover-foreground: oklch(0.96 0.008 85);
-  --primary: oklch(0.96 0.008 85);
-  --primary-foreground: oklch(0.11 0.005 250);
-  --secondary: oklch(0.18 0.006 250);
-  --secondary-foreground: oklch(0.96 0.008 85);
-  --muted: oklch(0.18 0.006 250);
-  --muted-foreground: oklch(0.58 0.01 250);
-  --accent: oklch(0.22 0.008 250);
-  --accent-foreground: oklch(0.96 0.008 85);
+  /* Pure monochrome — no color, no accent */
+  --background: oklch(0.06 0 0);
+  --foreground: oklch(0.98 0 0);
+  --card: oklch(0.10 0 0);
+  --card-foreground: oklch(0.98 0 0);
+  --popover: oklch(0.10 0 0);
+  --popover-foreground: oklch(0.98 0 0);
+  --primary: oklch(0.98 0 0);
+  --primary-foreground: oklch(0.06 0 0);
+  --secondary: oklch(0.14 0 0);
+  --secondary-foreground: oklch(0.98 0 0);
+  --muted: oklch(0.14 0 0);
+  --muted-foreground: oklch(0.60 0 0);
+  --accent: oklch(0.18 0 0);
+  --accent-foreground: oklch(0.98 0 0);
   --destructive: oklch(0.6 0.2 25);
   --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(1 0 0 / 7%);
+  --border: oklch(1 0 0 / 8%);
   --input: oklch(1 0 0 / 10%);
-  --ring: oklch(0.96 0.008 85 / 40%);
-
-  /* Signature signal color — warm amber */
-  --signal: oklch(0.78 0.14 68);
+  --ring: oklch(0.98 0 0 / 40%);
 
   --grid-line: oklch(1 0 0 / 4%);
-  --noise-opacity: 0.04;
+  --noise-opacity: 0.035;
 }
 
 .dark {
-  --background: oklch(0.11 0.005 250);
-  --foreground: oklch(0.96 0.008 85);
+  --background: oklch(0.06 0 0);
+  --foreground: oklch(0.98 0 0);
 }
 
 @layer base {
@@ -87,7 +83,7 @@
     overflow-x: hidden;
   }
   ::selection {
-    background: var(--signal);
+    background: var(--color-foreground);
     color: var(--color-background);
   }
 }
@@ -96,10 +92,6 @@
   .font-display { font-family: var(--font-display); }
   .font-mono-tech { font-family: var(--font-mono); }
   .tracking-tightest { letter-spacing: -0.05em; }
-
-  .text-signal { color: var(--signal); }
-  .bg-signal { background-color: var(--signal); }
-  .border-signal { border-color: var(--signal); }
 
   .grid-bg {
     background-image:
@@ -125,15 +117,6 @@
     color: transparent;
   }
 
-  .text-outline-signal {
-    -webkit-text-stroke: 1px var(--signal);
-    color: transparent;
-  }
-
-  .marquee {
-    animation: marquee 40s linear infinite;
-  }
-
   .label {
     display: inline-flex;
     align-items: center;
@@ -148,26 +131,15 @@
     content: "";
     width: 1.5rem;
     height: 1px;
-    background: var(--signal);
+    background: var(--color-muted-foreground);
   }
-}
-
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
 }
 
 @keyframes blink {
   0%, 49% { opacity: 1; }
   50%, 100% { opacity: 0; }
 }
-.blink { animation: blink 1.1s step-end infinite; color: var(--signal); }
-
-@keyframes pulse-dot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(0.85); }
-}
-.pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
+.blink { animation: blink 1.1s step-end infinite; }
 
 @utility btn-ghost-tech {
   position: relative;
@@ -198,17 +170,17 @@
   align-items: center;
   gap: 0.75rem;
   padding: 0.95rem 1.6rem;
-  background: var(--signal);
+  background: var(--color-foreground);
   color: var(--color-background);
   font-family: var(--font-mono);
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  border: 1px solid var(--signal);
+  border: 1px solid var(--color-foreground);
   transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
   cursor: pointer;
   &:hover {
     background: transparent;
-    color: var(--signal);
+    color: var(--color-foreground);
   }
 }

@@ -46,13 +46,12 @@ export function Process() {
 
   return (
     <section
-      id="process"
       ref={rootRef}
       className="relative border-t border-border py-32 md:py-48 grid-bg"
     >
       <div className="mx-auto max-w-[1600px] px-6 md:px-10">
         <div className="mb-20 max-w-3xl">
-          <div className="label mb-6">03 — How we work</div>
+          <div className="label mb-6">How we work</div>
           <h2 className="font-display text-5xl font-medium tracking-tightest md:text-7xl">
             A four-phase pipeline from <span className="text-outline">idea</span> to
             production intelligence.
@@ -66,7 +65,7 @@ export function Process() {
               className="process-card group relative flex flex-col justify-between gap-8 bg-background p-8 md:p-10 min-h-[340px] transition-colors hover:bg-card"
             >
               <div className="font-mono-tech text-xs text-muted-foreground">
-                {s.n} / {STEPS.length.toString().padStart(2, "0")}
+                {s.n} — {STEPS.length.toString().padStart(2, "0")}
               </div>
               <div>
                 <h3 className="font-display text-4xl font-medium tracking-tightest mb-4">
