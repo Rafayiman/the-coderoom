@@ -100,7 +100,7 @@ export function Work() {
       <div className="mx-auto max-w-[1600px] px-6 md:px-10">
         <div className="mb-20 flex items-end justify-between">
           <div>
-            <div className="label mb-6">02 — Selected Work</div>
+            <div className="label mb-6">Selected Work</div>
             <h2 className="work-title font-display text-6xl font-medium tracking-tightest md:text-8xl">
               <span className="inline-block overflow-hidden">
                 <span className="work-title-word inline-block">Built.</span>
@@ -111,14 +111,14 @@ export function Work() {
             </h2>
           </div>
           <div className="hidden md:block font-mono-tech text-xs text-muted-foreground">
-            {String(active + 1).padStart(2, "0")} / {String(PROJECTS.length).padStart(2, "0")}
+            {String(active + 1).padStart(2, "0")} — {String(PROJECTS.length).padStart(2, "0")}
           </div>
         </div>
 
         <div className="divide-y divide-border border-y border-border">
           {PROJECTS.map((p, i) => (
             <a
-              href="#book"
+              href="/book"
               key={p.id}
               className="project-row group relative grid grid-cols-12 items-center gap-4 py-8 md:py-10 transition-colors hover:bg-card/50"
               onMouseEnter={() => setActive(i)}
