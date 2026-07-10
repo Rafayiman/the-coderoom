@@ -53,9 +53,7 @@ export function About() {
       <div className="mx-auto max-w-[1600px] px-6 md:px-10">
         <div className="grid gap-16 md:grid-cols-12">
           <div className="md:col-span-4">
-            <div className="font-mono-tech text-[11px] uppercase tracking-[0.3em] text-muted-foreground mb-4">
-              [ 04 ] The Studio
-            </div>
+            <div className="label mb-6">04 — The Studio</div>
             <h2 className="font-display text-5xl font-medium tracking-tightest">
               Small team. <br />
               <span className="text-outline">Loud output.</span>

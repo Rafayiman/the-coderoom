@@ -50,9 +50,7 @@ export function Book() {
       <div className="mx-auto max-w-[1600px] px-6 md:px-10">
         <div className="grid gap-16 md:grid-cols-12">
           <div className="md:col-span-5">
-            <div className="font-mono-tech text-[11px] uppercase tracking-[0.3em] text-muted-foreground mb-4">
-              [ 05 ] Initiate Contact
-            </div>
+            <div className="label mb-6">05 — Get in touch</div>
             <div className="overflow-hidden">
               <h2 className="book-title font-display text-6xl md:text-8xl font-medium tracking-tightest leading-[0.9]">
                 Book a <br />
@@ -74,9 +72,7 @@ export function Book() {
           <div className="md:col-span-7 border border-border p-6 md:p-10 bg-card/40">
             {submitted ? (
               <div className="flex flex-col items-start gap-6 py-16">
-                <div className="font-mono-tech text-[11px] uppercase tracking-[0.3em] text-muted-foreground">
-                  [ TRANSMISSION RECEIVED ]
-                </div>
+                <div className="label">Message received</div>
                 <h3 className="font-display text-5xl md:text-6xl font-medium tracking-tightest">
                   Locked in.
                 </h3>
@@ -173,11 +169,10 @@ export function Book() {
 
                 <div className="book-el flex items-center justify-between pt-4 border-t border-border">
                   <span className="font-mono-tech text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-                    → {SLOTS[slot].day} {SLOTS[slot].date} · {SLOTS[slot].time}{" "}
-                    {SLOTS[slot].tz}
+                    <span className="text-signal">●</span> {SLOTS[slot].day} {SLOTS[slot].date} · {SLOTS[slot].time} {SLOTS[slot].tz}
                   </span>
                   <button type="submit" className="btn-solid-tech">
-                    Transmit →
+                    Send message
                   </button>
                 </div>
               </form>

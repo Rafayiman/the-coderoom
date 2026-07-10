@@ -44,8 +44,8 @@ export function Footer() {
             </div>
           </div>
           <div className="flex flex-col md:flex-row justify-between gap-4 font-mono-tech text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-            <div>© MMXXVI thecoderoom — All rights reserved.</div>
-            <div>Crafted with GSAP · Three.js · Lenis</div>
+            <div>© 2026 thecoderoom — All rights reserved.</div>
+            <div>Crafted with care in Brooklyn</div>
           </div>
         </div>
       </div>
