@@ -9,6 +9,8 @@ export const getRouter = () => {
     routeTree,
     context: { queryClient },
     scrollRestoration: true,
+    // Smooth-scroll to #section links on the home page.
+    defaultHashScrollIntoView: { behavior: "smooth" },
     defaultPreloadStaleTime: 0,
   });
 
